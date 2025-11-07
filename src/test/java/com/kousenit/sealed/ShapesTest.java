@@ -33,7 +33,7 @@ public class ShapesTest {
         List<Shape> shapes = List.of(circle, square, rectangle,
                 transparentRectangle, filledRectangle);
 
-        // Pattern matching for switch (preview of Java 17)
+        // Pattern matching for switch
         for (Shape shape : shapes) {
               // enhanced switch
             double value = switch (shape) {

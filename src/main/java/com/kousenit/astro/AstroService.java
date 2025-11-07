@@ -5,6 +5,8 @@ import com.kousenit.http.AstroResponse;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static com.kousenit.http.AstroResponse.*;
+
 public class AstroService {
     private final Gateway<AstroResponse> gateway;
 
@@ -33,7 +35,6 @@ public class AstroService {
 
     private Map<String, Long> extractMap(AstroResponse data) {
         return data.people().stream()
-                .collect(Collectors.groupingBy(
-                        AstroResponse.Assignment::craft, Collectors.counting()));
+                .collect(Collectors.groupingBy(Assignment::craft, Collectors.counting()));
     }
 }
