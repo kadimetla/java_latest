@@ -8,7 +8,7 @@ plugins {
 }
 
 jacoco {
-    toolVersion = "0.8.13"
+    toolVersion = "0.8.14"
 }
 
 java {
@@ -55,7 +55,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off", "--enable-preview")
+    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
     finalizedBy(tasks.jacocoTestReport)
 }
 
@@ -70,6 +70,6 @@ tasks.jacocoTestReport {
 }
 
 tasks.withType<JavaExec>().configureEach {
-    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off", "--enable-preview")
+    jvmArgs("-XX:+EnableDynamicAgentLoading", "-Xshare:off")
 }
 

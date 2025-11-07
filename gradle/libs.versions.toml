@@ -1,9 +1,9 @@
 [versions]
-assertj = "3.27.3"
-gson = "2.13.1"
-jackson = "2.19.1"
-junit = "5.13.3"
-mockito = "5.18.0"
+assertj = "3.27.6"
+gson = "2.13.2"
+jackson = "3.0.1"
+junit = "6.0.1"
+mockito = "5.20.0"
 slf4j = "2.0.17"
 wiremock = "3.13.1"
 wiremock-jetty12 = "3.13.1"
@@ -11,8 +11,8 @@ wiremock-jetty12 = "3.13.1"
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-jackson = { module = "com.fasterxml.jackson:jackson-bom", version.ref = "jackson" }
-jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson-core = { module = "tools.jackson.core:jackson-core", version.ref = "jackson" }
+jackson-databind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
@@ -22,7 +22,7 @@ wiremock-jetty12 = { module = "org.wiremock:wiremock-jetty12", version.ref = "wi
 
 [bundles]
 jackson = [
-    "jackson",
+    "jackson-core",
     "jackson-databind",
 ]
 mockito = [

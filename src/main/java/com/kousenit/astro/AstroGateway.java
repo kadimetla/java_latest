@@ -1,7 +1,7 @@
 package com.kousenit.astro;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kousenit.http.AstroResponse;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.net.URI;
