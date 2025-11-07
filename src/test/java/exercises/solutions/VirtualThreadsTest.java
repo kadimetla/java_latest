@@ -60,6 +60,7 @@ public class VirtualThreadsTest {
         assertTrue(latch.await(5, TimeUnit.SECONDS));
         long elapsed = System.currentTimeMillis() - start;
         // Virtual threads should handle this efficiently
+        System.out.println( "Elapsed time: " + elapsed);
         assertTrue(elapsed < 2000);
     }
     

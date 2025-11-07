@@ -24,12 +24,10 @@ public class ProcessDictionaryV2 {
 
     private int maxLength() {
         return processFile(words ->
-                words.mapToInt(String::length)
-                        .max()
-                        .orElse(0));
+                words.mapToInt(String::length).max().orElse(0));
     }
 
-    public void printNTenLongestWords(int n) {
+    public void printNLongestWords(int n) {
         System.out.printf("%n%d Longest Words:%n", n);
         int maxForFilter = maxLength() - 10;
         processFile(words -> {
@@ -109,7 +107,7 @@ public class ProcessDictionaryV2 {
     @SuppressWarnings("unused")
     public static void main(String[] args) {
         var processDictionary = new ProcessDictionaryV2();
-        processDictionary.printNTenLongestWords(10);
+        processDictionary.printNLongestWords(10);
         processDictionary.printWordsOfEachLength();
         processDictionary.printHowManyWordsOfEachLength();
         processDictionary.teeingCollectorExample();

@@ -8,42 +8,42 @@ class ProcessDictionaryV2Test {
     private final ProcessDictionaryV2 pd = new ProcessDictionaryV2();
 
     @Test
-    void testPrintNTenLongestWords() {
+    void testPrintNLongestWords() {
         // Verify method executes without exception
-        assertDoesNotThrow(() -> pd.printNTenLongestWords(5));
+        assertDoesNotThrow(() -> pd.printNLongestWords(5));
     }
 
     @Test
-    void testPrintNTenLongestWordsWithDifferentValues() {
+    void testPrintNLongestWordsWithDifferentValues() {
         // Test with different n values
-        assertDoesNotThrow(() -> pd.printNTenLongestWords(10));
-        assertDoesNotThrow(() -> pd.printNTenLongestWords(3));
-        assertDoesNotThrow(() -> pd.printNTenLongestWords(1));
+        assertDoesNotThrow(() -> pd.printNLongestWords(10));
+        assertDoesNotThrow(() -> pd.printNLongestWords(3));
+        assertDoesNotThrow(() -> pd.printNLongestWords(1));
     }
 
     @Test
     void testPrintWordsOfEachLength() {
         // Verify method executes without exception
-        assertDoesNotThrow(() -> pd.printWordsOfEachLength());
+        assertDoesNotThrow(pd::printWordsOfEachLength);
     }
 
     @Test
     void testPrintHowManyWordsOfEachLength() {
         // Verify method executes without exception
-        assertDoesNotThrow(() -> pd.printHowManyWordsOfEachLength());
+        assertDoesNotThrow(pd::printHowManyWordsOfEachLength);
     }
 
     @Test
     void testTeeingCollectorExample() {
         // This is the featured example in the slides (lines 171-194)!
         // Demonstrates teeing collector with nested collectors
-        assertDoesNotThrow(() -> pd.teeingCollectorExample());
+        assertDoesNotThrow(pd::teeingCollectorExample);
     }
 
     @Test
     void testPrintSortedMapOfWords() {
         // Verify method executes without exception
-        assertDoesNotThrow(() -> pd.printSortedMapOfWords());
+        assertDoesNotThrow(pd::printSortedMapOfWords);
     }
 
     @Test
@@ -53,23 +53,23 @@ class ProcessDictionaryV2Test {
     }
 
     @Test
-    void testPrintNTenLongestWordsEdgeCases() {
+    void testPrintNLongestWordsEdgeCases() {
         // Edge case: n = 0
-        assertDoesNotThrow(() -> pd.printNTenLongestWords(0));
+        assertDoesNotThrow(() -> pd.printNLongestWords(0));
 
         // Test with large number
-        assertDoesNotThrow(() -> pd.printNTenLongestWords(100));
+        assertDoesNotThrow(() -> pd.printNLongestWords(100));
     }
 
     @Test
     void testAllPublicMethodsExecute() {
         // Comprehensive test: run all public methods
         assertAll("All public methods execute successfully",
-                () -> assertDoesNotThrow(() -> pd.printNTenLongestWords(5)),
-                () -> assertDoesNotThrow(() -> pd.printWordsOfEachLength()),
-                () -> assertDoesNotThrow(() -> pd.printHowManyWordsOfEachLength()),
-                () -> assertDoesNotThrow(() -> pd.teeingCollectorExample()),
-                () -> assertDoesNotThrow(() -> pd.printSortedMapOfWords())
+                () -> assertDoesNotThrow(() -> pd.printNLongestWords(5)),
+                () -> assertDoesNotThrow(pd::printWordsOfEachLength),
+                () -> assertDoesNotThrow(pd::printHowManyWordsOfEachLength),
+                () -> assertDoesNotThrow(pd::teeingCollectorExample),
+                () -> assertDoesNotThrow(pd::printSortedMapOfWords)
         );
     }
 }
