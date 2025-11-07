@@ -25,16 +25,16 @@ public class ISSPosition {
             System.out.println(response.headers());
             System.out.println(response.body());
 
-//            client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-//                    .thenApply(HttpResponse::body)
-//                    .thenAccept(System.out::println)
-//                    .join();
+            client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body)
+                    .thenAccept(System.out::println)
+                    .join();
 
             ISSResponse issResponse = getResponseGson(response);
             System.out.println(issResponse);
-//            System.out.printf("The ISS is currently at (%s, %s)%n",
-//                    issResponse.issPosition().latitude(),
-//                    issResponse.issPosition().longitude());
+            System.out.printf("The ISS is currently at (%s, %s)%n",
+                    issResponse.issPosition().latitude(),
+                    issResponse.issPosition().longitude());
         }
     }
 

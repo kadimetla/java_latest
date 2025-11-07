@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("DataFlowIssue")
 public class ImmutableCollectionsTest {
@@ -29,33 +28,15 @@ public class ImmutableCollectionsTest {
     }
 
     @Test
-    public void showImmutabilityAdd() {
+    public void showUnmodifiableListMethods() {
         List<Integer> intList = List.of(1, 2, 3);
-        assertThrows(UnsupportedOperationException.class, () -> intList.add(99));
-    }
-
-    @Test
-    public void showImmutabilityClear() {
-        List<Integer> intList = List.of(1, 2, 3);
-        assertThrows(UnsupportedOperationException.class, intList::clear);
-    }
-
-    @Test
-    public void showImmutabilityRemove() {
-        List<Integer> intList = List.of(1, 2, 3);
-        assertThrows(UnsupportedOperationException.class, intList::removeFirst);
-    }
-
-    @Test
-    public void showImmutabilityReplace() {
-        List<Integer> intList = List.of(1, 2, 3);
-        assertThrows(UnsupportedOperationException.class, () -> intList.replaceAll(n -> -n));
-    }
-
-    @Test
-    public void showImmutabilitySet() {
-        List<Integer> intList = List.of(1, 2, 3);
-        assertThrows(UnsupportedOperationException.class, () -> intList.set(0, 99));
+        assertAll(
+                () -> assertThrows(UnsupportedOperationException.class, () -> intList.add(99)),
+                () -> assertThrows(UnsupportedOperationException.class, intList::clear),
+                () -> assertThrows(UnsupportedOperationException.class, intList::removeFirst),
+                () -> assertThrows(UnsupportedOperationException.class, () -> intList.replaceAll(n -> -n)),
+                () -> assertThrows(UnsupportedOperationException.class, () -> intList.set(0, 99))
+        );
     }
 
     @Test
