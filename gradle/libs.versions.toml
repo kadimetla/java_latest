@@ -1,12 +1,12 @@
 [versions]
 assertj = "3.27.6"
 gson = "2.13.2"
-jackson = "3.0.1"
+jackson = "3.1.0"
 junit = "6.0.1"
-mockito = "5.20.0"
+mockito = "5.22.0"
 slf4j = "2.0.17"
-wiremock = "3.13.1"
-wiremock-jetty12 = "3.13.1"
+wiremock = "3.13.2"
+wiremock-jetty12 = "3.13.2"
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }

@@ -1134,27 +1134,56 @@ Data processing becomes declarative and type-safe!
 
 ---
 
-# DOP: Result Pattern Example
+# DOP: Result Pattern with Real APIs
 
 ```java
-// From the astro example in this repository
-public sealed interface Result<T> permits Success, Failure {
+// From the SpaceDev example — Launch Library 2 API
+public sealed interface Result {
+    record Success(List<Expedition> expeditions) implements Result {}
+    record NetworkError(String message) implements Result {}
+    record ClientError(int statusCode, String body) implements Result {}
+    record ServerError(int statusCode) implements Result {}
+    record RateLimited(String retryAfter) implements Result {}
 }
+```
 
-public record Success<T>(T data) implements Result<T> {}
-public record Failure<T>(String error) implements Result<T> {}
-
-// Client code knows there are only two possibilities
-Result<AstroResponse> result = fetchAstronauts();
-String message = switch (result) {
-    case Success(var astroData) -> 
-        "Found " + astroData.number() + " astronauts";
-    case Failure(var error) -> 
-        "Error: " + error;
+```java
+// Exhaustive pattern matching — compiler enforces all five cases
+String describe = switch (result) {
+    case Success(var expeditions) -> formatExpeditions(expeditions);
+    case NetworkError(var msg)    -> "Network error: " + msg;
+    case ClientError(var code, _) -> "Client error: " + code;
+    case ServerError(var code)    -> "Server error: " + code;
+    case RateLimited(var retry)   -> "Retry after: " + retry;
 };
 ```
 
-See the `astro` package for the complete example!
+See the `dataorientedprogramming` package for the complete example!
+
+---
+
+# DOP: Nested Records from REST APIs
+
+```java
+// Fixed set of types mirrors the API response
+record Expedition(int id, String name, SpaceStation spacestation,
+                  List<CrewMember> crew) {}
+record SpaceStation(int id, String name, String orbit) {}
+record CrewMember(Role role, Astronaut astronaut) {}
+record Astronaut(int id, String name, Agency agency) {}
+record Agency(String name, String abbrev) {}
+```
+
+```java
+// Open set of operations — behavior lives outside the records
+public static Map<String, List<String>> crewByAgency(List<Expedition> expeditions) {
+    return toAssignments(expeditions).stream()
+            .collect(Collectors.groupingBy(
+                    AstronautAssignment::agency,
+                    Collectors.mapping(AstronautAssignment::astronautName,
+                            Collectors.toList())));
+}
+```
 
 ---
 

@@ -45,7 +45,7 @@ dependencies {
     testImplementation("com.jayway.jsonpath:json-path:2.9.0")
 
     // Make vulnerability issues go away
-    testImplementation("commons-io:commons-io:2.17.0")
+    testImplementation("commons-io:commons-io:2.21.0")
     // Jetty 12 is now included via wiremock-jetty12
 }
 
